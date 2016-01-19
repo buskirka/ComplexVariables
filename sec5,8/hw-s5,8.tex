@@ -70,6 +70,7 @@ real or purely imaginary.
 \end{proof}
 
 \section{Problem 8.1}
+\subsection{Part 8.1.a}
 \begin{align*}
 \arg(z)
 &= \arg\p{\frac{i}{-2-2i}} \\
@@ -81,7 +82,7 @@ real or purely imaginary.
 \operatorname{Arg}(z) &= -3\pi/4
 \end{align*}
 
-\section{Problem 8.2}
+\subsection{Part 8.1.b}
 \begin{align*}
 z
 &= \arg\p{ \p{\sqrt{3}-i}^6 } \\
@@ -99,4 +100,33 @@ the integer $6$
 in that field on the coset-valued return of the $\arg$ above, as in a $\Z$-module. It does 
 \textit{not} stretch the coset into $-\pi+12\pi\Z$.
 
+\section{Problem 8.2}
+\subsection{Problem 8.2.a}
+\begin{theorem}
+\[|e^{i\theta}|=1\]
+\end{theorem}
+\begin{proof}
+Using the definitions of $e^{i\theta}$ and the modulus,
+\begin{align*}
+|e^{i\theta}| 
+&= \left| \cos\theta+i\sin\theta \right| \\
+&= \sqrt{(\cos\theta+i\sin\theta)(\cos\theta-i\sin\theta)}\\
+&= \sqrt{ \cos^2\theta + \sin^2\theta }\\
+&= \sqrt{1}\\
+&= 1
+\end{align*}
+\end{proof}
+\subsection{Problem 8.2.b}
+\begin{theorem}
+\[ \overline{e^{i\theta}} = e^{-i\theta} \]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\overline{e^{i\theta}} 
+&= \overline(\cos\theta,\sin\theta) \\
+&= (\cos\theta,-\sin\theta) \\
+&= (\cos(-\theta),\sin(-\theta)) \\
+&= e^{-i\theta}
+\end{align*}
+\end{proof}
 \end{document}
