@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 15}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[section]{Theorem}
+\newtheorem{conjecture}[section]{Conjecture}
+\newtheorem{lemma}[section]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[section]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\set}[1]{\left\{#1\right\}}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+\begin{quote}
+Prove $\lim_{z\to 0} |z|/z$ does not exist, find $\lim_{z\to i} z^2+1+i$ 
+and use $\epsilon-\delta$ proof to prove that answer correct.
+\end{quote}
+
+\begin{theorem}
+$\lim_{z \to 0} |z| / z$ does not exist.
+\end{theorem}
+\begin{proof}
+Consider two sequences, $(1/n)$ and $(i/n)$. 
+\[ \lim_n \frac{|1/n|}{1/n} = \lim_n \frac{1/n}{1/n} = \lim_n 1 = 1 \]
+\[ \lim_n \frac{|i/n|}{i/n} 
+=  \lim_n \frac{\sqrt{ (i/n)(-i/n) }}{i/n}
+=  \lim_n \frac{\sqrt{ -(-1)/n^2 }}{i/n}
+=  \lim_n \frac{1/n}{i/n}
+=  \lim_n \frac{1}{i}\frac{-i}{-i}
+=  \lim_n \frac{-i}{1} 
+=  -i
+\]
+Since these two sequences both converge to $0$ but they converge to different
+images, the limit at $0$ is not well-defined and does not exist.
+\end{proof}
+
+\begin{theorem}
+\[ \lim_{z\to i} z^2+1+i = i \]
+\end{theorem}
+\begin{proof}
+Suppose we are given some $\epsilon>0$. Then let 
+$\delta = \sqrt{1+\epsilon}-1$.
+
+Then suppose $|z-i| < \delta$. So
+\begin{align}
+|z-i| &< \sqrt{1+\epsilon} - 1 \label{ineq1}\\
+|z+i-2i| &< \sqrt{1+\epsilon} - 1 \nonumber \\
+|z+i|-|2i| \le \big| |z+i| - |2i| \big| &< \sqrt{1+\epsilon} - 1 \nonumber \\
+|z+i|-2 &< \sqrt{1+\epsilon} - 1 \nonumber \\
+|z+i| &< \sqrt{1+\epsilon} + 1 \label{ineq2}
+\end{align}
+Combining the inequalities \eqref{ineq1} and \eqref{ineq2},
+\begin{align*}
+|z-i| \cdot |z+i| &< (\sqrt{1+\epsilon}-1)(\sqrt{1+\epsilon}+1) \\
+|(z-i) (z+i)| &< (\sqrt{1+\epsilon})^2 - 1 \\
+|(z+i)(z-i)| &< 1+\epsilon-1 \\
+|z^2+1| &< \epsilon \\
+|(z^2 + 1 + i) - i| &< \epsilon
+\end{align*}
+Hence if $|z-i| < \delta = \sqrt{1+\epsilon}-1$, then 
+$|(z^2+1+i)-i| < \epsilon$. Therefore, $\lim_{z\to i} z^2+1+i = i$.
+\end{proof}
+
+\end{document}
