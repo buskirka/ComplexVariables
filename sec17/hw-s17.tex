@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 17}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+\begin{quote}
+Prove $\lim_{z\to\infty} \frac{|z|}{z}$ is not defined.
+\end{quote}
+\begin{theorem}
+$\lim_{z\to\infty} \frac{|z|}{z}$ is not defined.
+\end{theorem}
+\begin{proof}
+The sequences $(n)$ and $(in)$ both have infinity as their limit,
+yet 
+\[ 
+\lim_{z\to\infty} \frac{|n|}{n} 
+= \lim_{z\to\infty} \frac{n}{n} 
+= \lim_{z\to\infty} 1
+\]
+\[
+\lim_{z\to\infty} \frac{|in|}{in}
+= \lim_{z\to\infty} \frac{n}{in}
+= \lim_{z\to\infty} \frac{1}{i} \frac{i}{i}
+= \lim_{z\to\infty} \frac{i}{-1}
+= -i
+\]
+\end{proof}
+
+\begin{quote}
+Find $\frac{d}{dz} z^{-1}$.
+\end{quote}
+\begin{theorem}
+\[ \frac{d}{dz} z^{-1} = -\frac{1}{z^2} \]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\frac{d}{dz} z^{-1} 
+&= \lim_{h \to 0} \frac{(z+h)^{-1} - (z)^{-1}}{h} \\
+&= \lim_{h \to 0} \frac{\frac{z}{z^2+hz} - \frac{z+h}{z^2+hz}}{h}\\
+&= \lim_{h \to 0} \frac{\frac{z-z-h}{z^2+hz}}{h} \\
+&= \lim_{h \to 0} \frac{-h}{z^2h+h^2z}\\
+&= \lim_{h \to 0} \frac{-1}{z^2+zh} \\
+&= -\frac{1}{z^2}
+\end{align*}
+\end{proof}
+
+\end{document}
