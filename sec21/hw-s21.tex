@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 21}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+p. 71 \#1 bd [Verify the C-R equations for f(x)=1/z].
+
+\section{Problem 1}
+\subsection{Part b}
+For $f(z) = z-\bar{z}$, 
+\[ u(x,y) = 0 \qquad v(x,y) = 2y \]
+So $v_y = 2 \neq 0 = u_x$, contradicting the first equation in (7) in the text.
+
+\subsection{Part d}
+For $f(z)=e^x e^{-iy}$,
+\[ u(x,y) = e^x \cos(-y) = e^x \cos(y) \]
+\[ v(x,y) = e^x \sin(-y) = -e^x \sin(y) \]
+Thus
+\[ u_x = e^x \cos(y) \]
+\[ u_y = -e^x \sin(y) \]
+\[ v_x = -e^x \sin(y) \]
+\[ v_y = -e^x \cos(y) \]
+
+But
+\[ u_y = -e^x \sin y \neq -\sq{ -e^x \sin y} = -v_x \]
+Unless, per chance, $y \in \pi\Z$. In this case, however, $\cos(y) \neq 0$,
+which means the second condition,
+\[ u_x = e^x \cos(y) \neq -e^x \cos(y) = v_y \]
+cannot be satisfied. Hence $f$ is not differentiable at any point.
+
+\section{Verify C-R}
+For $f(z)=1/z$,
+\[ u(x,y) = \frac{x}{x^2+y^2} \]
+\[ v(x,y) = \frac{-y}{x^2+y^2} \]
+Thus 
+\[ 
+u_x 
+= \frac{d}{dx} \sq{ x(x^2+y^2)^{-1} }
+= \frac{1}{x^2+y^2} + x (-1) (x^2+y^2)^{-2} (2x) 
+= \frac{1}{x^2+y^2} - \frac{ 2x^2 }{(x^2+y^2)^2}
+\]
+\[
+= \frac{x^2+y^2 - 2x^2}{(x^2+y^2)^2}
+= \frac{y^2-x^2}{(x^2+y^2)^2}
+\]
+and
+\[
+u_y
+= \frac{d}{dy} \sq{x (x^2+y^2)^{-1} }
+= x D_y \sq{ (x^2+y^2)^{-1} }
+= x \sq{(-1) (x^2+y^2)^{-2} 2y}
+= \frac{-2xy}{(x^2+y^2)^{2}}
+\]
+and
+\[
+v_x 
+= D_x \sq{-y (x^2+y^2)^{-1}}
+= -y D_x (x^2+y^2)^{-1}
+= -y (-1) (x^2+y^2)^{-2} 2x
+= \frac{2xy}{(x^2+y^2)^{2}}
+\]
+and 
+\[
+v_y
+= D_y \sq{ -y (x^2+y^2)^{-1} }
+= - \sq{1 \cdot (x^2+y^2)^{-1} + y (-1) (x^2+y^2)^{-2} (2y) }
+= - \sq{\frac{1}{x^2+y^2} - \frac{2y^2}{(x^2+y^2)^2}  }
+\]
+\[
+= - \frac{x^2+y^2 - 2y^2}{(x^2+y^2)^2}
+= - \frac{x^2-y^2}{(x^2+y^2)^2}
+= \frac{y^2-x^2}{(x^2+y^2)^2}
+\]
+
+From these, it is evident that
+\[
+u_x = \frac{y^2-x^2}{(x^2+y^2)^2} = v_y 
+\]
+and
+\[ 
+u_y = \frac{-2xy}{(x^2+y^2)^2} = -\p{\frac{2xy}{(x^2+y^2)^2}} = -v_x
+\]
+and thus $f(x) = 1/z$ satisfies the Caucy-Riemann equations.
+
+
+\end{document}
