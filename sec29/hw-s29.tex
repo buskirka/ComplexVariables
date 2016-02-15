@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\title{TITLE}
+\title{Complex Variables Homework Section 29}
 \author{Adam Buskirk}
 
 \usepackage{amssymb,amsmath,amsthm}
@@ -21,11 +21,40 @@
 \newcommand{\p}[1]{\left(#1\right)}
 \newcommand{\sq}[1]{\left[#1\right]}
 \newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\norm}[1]{\left|\left|#1\right|\right|}
 % \newcommand{\p}[1]{\left(#1\right)}
 
 \begin{document}
 \maketitle
 
+p.\ 92 \#6. Find $\log(-1/\sqrt{2}+i/\sqrt{2})$.
+
+\section{Problem 6}
+\begin{theorem}
+\[ \abs{\exp(z^2)} \le \exp(\abs{z}^2) \]
+\end{theorem}
+\begin{proof}
+Consider an arbitrary $z=x+yi$.
+\begin{align*}
+\abs{\exp(z^2)}
+&= \abs{\exp(x^2-y^2+xyi)} \\
+&= \abs{\exp(x^2-y^2)} \cdot \abs{\cos(xy)+i\sin(xy)}\\
+&= \exp(x^2-y^2) \cdot \sqrt{\cos^2(xy)+\sin^2(xy)} \\
+&= \exp(x^2-y^2) \cdot 1 \\
+&= \exp(x^2-y^2) \\
+&\le \exp(x^2+y^2) \tag{$\exp$ is increasing on $\R$}\\
+&= \exp(\abs{z}^2)
+\end{align*}
+\end{proof}
+
+\section{Finding logarithm}
+\begin{align*}
+\log(-1/\sqrt{2}+i/\sqrt{2})
+&= \ln\abs{\frac{-1}{\sqrt{2}} + \frac{i}{\sqrt{2}}} + i \p{\frac{3\pi}{4}+2\pi k} \\
+&= \ln\sqrt{\frac{1}{2}+\frac{1}{2}} + i\p{\frac{3\pi}{4} + 2 \pi k} \\
+&= \ln 1 + i\p{\frac{3\pi}{4} + 2 \pi k} \\
+&= \frac{3}{4} \pi i + 2\pi i k
+\end{align*}
 
 \end{document}
