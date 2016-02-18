@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 33}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+\allowdisplaybreaks[1]
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+Find $(-1)^{1/3}$ and PV $(-1)^{1/3}$.
+
+\begin{align*}
+(-1)^{1/3} 
+&= e^{1/3 \log (-1)} \\
+&= e^{1/3 (\ln 1 + i (\pi + 2 \pi n))} \\
+&= e^{1/3 (i (\pi + 2 \pi n))} \\
+&= e^{i \pi /3 + 2/3 i \pi n} \\
+&= e^{i (\pi/3 + 2/3 \pi n)} \\
+&= \cos\p{\frac{\pi}{3} + \frac{2}{3} \pi n} 
++ i \sin\p{\frac{\pi}{3} + \frac{2}{3} \pi n}
+\end{align*}
+
+In particular, the principal value of $(-1)^{1/3}$ is $0.5+\sqrt{3}/2$.
+
+\section{Problem 2}
+\begin{lemma}
+\[ \overline{e^{z}} = e^{\bar{z}} \]
+\end{lemma}
+\begin{proof}
+Let $x+yi=z$.
+\begin{align*}
+\overline{e^z}
+&= \overline{e^x} e^{yi} \\
+&= \overline{e^x \p{\cos(y)+i\sin(y)}} \\
+&= e^x \overline{\p{\cos y + i \sin y}} \\
+&= e^x \p{\cos y - i \sin y } \\
+&= e^x \p{ \cos (-y) + i \sin (-y) } \\
+&= e^x e^{i(-y)} \\
+&= e^{x-yi} \\
+&= e^{\bar{z}}
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+\[\overline{\sin(z)} = \sin(\bar{z})\]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\overline{\sin(z)}
+&= \overline{\p{\frac{e^{iz}-e^{-iz}}{2i}}} \\
+&= \frac{\p{\overline{e^{iz}-e^{-iz}}}}{\overline{2i}} \\
+&= \frac{ \overline{e^{iz}} - \overline{e^{-iz}} }{-2i} \\
+&= \frac{ e^{(\overline{iz})} - e^{(\overline{-iz})} }{-2i} \\
+&= \frac{ e^{\bar{i} \bar{z}} - e^{\overline{-i}\bar{z}} }{-2i} \\
+&= \frac{ e^{-i \bar{z}} - e^{i\bar{z}} }{-2i} \\
+&= \frac{   e^{i\bar{z}} - e^{-i \bar{z}}}{2i} \\
+&= \sin(\bar{z})
+\end{align*}
+\end{proof}
+
+\end{document}
