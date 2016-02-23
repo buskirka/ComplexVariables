@@ -28,6 +28,39 @@
 \begin{document}
 \maketitle
 
-p.\ 108 \#7 (Just do $\abs{\sin z}^2$)
+p.\ 108 \#7 (Just do $\abs{\sin z}^2$). 
+Find $\cos^{-1}(i)$.
+
+\section{Problem 7}
+\begin{align*}
+\abs{\sin z}^2
+= \sin z \cdot \overline{\sin z} 
+&= \p{\sin x \cosh y + i \cos x \sinh y} \cdot \overline{\p{\sin x \cosh y - i \cos x \sinh y}}\\
+&= \sin^2 x \cosh^2 y + \cos^2 x \sinh^2 y\\
+&= \sin^2 x \cosh^2 y + (1-\sin^2 x) \sinh^2 y\\
+&= \sin^2 x \cosh^2 y + \sinh^2 y - \sin^2 x \sinh^2 y\\
+&= \sin^2 x \p{\cosh^2 y - \sinh^2 y} + \sinh^2 y \\
+&= \sin^2 x  + \sinh^2 y \\
+\end{align*}
+
+\section{$\cos^{-1}(i)$}
+\begin{align*}
+\cos^{-1} i 
+&= - i \log \p{i+i(1-i^2)^{1/2}}\\
+&= - i \log \p{i(1+2^{1/2})}\\
+&= - i \log \p{i(1 \pm \sqrt{2})}
+\intertext{For the positive square root,}
+(+)&= - i \log(i(1+\sqrt{2})) \\
+&= -i \p{\ln(1+\sqrt{2}) + i \p{\frac{\pi}{4}+2n\pi}} \tag{$n \in \Z$}\\
+&= -i \ln(1+\sqrt{2}) + \frac{\pi}{4}+2n\pi \tag{$n \in \Z$}
+\intertext{For the negative square root,}
+(-)&= - i \log(i(1-\sqrt{2}))
+= - i \log(-i(\sqrt{2}-1)) \\
+&= -i \p{\ln(\sqrt{2}-1) + i \p{-\frac{\pi}{4} + 2 n \pi}} \tag{$n \in \Z$}\\
+&= -i \ln(\sqrt{2}-1) - \frac{\pi}{4} + 2 n \pi \tag{$n \in \Z$}\\
+&= i \ln(1+\sqrt{2}) - \frac{\pi}{4} + 2 n \pi \tag{$n \in \Z$}
+\intertext{Therefore,}
+\cos^{-1} i &= \pm i \ln(1+\sqrt{2}) + \frac{\pi}{4} + 2 n \pi \tag{$n \in \Z$}
+\end{align*}
 
 \end{document}
