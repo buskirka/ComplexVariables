@@ -1,0 +1,295 @@
+\documentclass{article}
+
+\title{Complex Variables Midterm}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+\allowdisplaybreaks[1]
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+\begin{align*}
+\frac{(3+2i)^2}{1-2i}
+&= \frac{(3+2i)^2}{1-2i} \cdot \frac{1+2i}{1+2i} \\
+&= \frac{(3+2i)^2 (1+2i)}{1^2+2^2} \\
+&= \frac{(9+12i-4) (1+2i)}{5} \\
+&= \frac{(5+12i) (1+2i)}{5} \\
+&= \frac{5+12i+10i-24}{5} \\
+&= \frac{-19+22i}{5} \\
+&= -\frac{19}{5} + \frac{22}{5} i
+\end{align*}
+Thus, the real portion of the complex fraction is $-19/5$ whilst
+the imaginary portion is $22/5$.
+
+\section{Problem 2}
+The cube roots of $-8$ are
+\[
+z = \sqrt[3]{8} \exp\sq{i\p{\frac{\pi}{3} + \frac{2k\pi}{3}}} 
+= 2 \exp\sq{i\p{\frac{\pi}{3} + \frac{2 k \pi}{3}}}\tag{$k=0,1,2$}
+\]
+Which are 
+\begin{align*}
+2 (\cos(\pi/3)+i\sin(\pi/3)) &= 1 + i \sqrt{3} \\
+2 (\cos(\pi) + i \sin(\pi) ) &= -2 \\
+2 (\cos(5\pi/3) + i \sin(5\pi/3)) &= 1 - i \sqrt{3}
+\end{align*}
+
+\section{Problem 3}
+\begin{quote}
+Let $z = 1+i$.
+\end{quote}
+\subsection{Part 3.a}
+$\overline{z}=\overline{1+i}=1-i$.
+\subsection{Part 3.b}
+$\abs{z}=\sqrt{z\overline{z}}=\sqrt{(1+i)(1-i)}=\sqrt{1+1}=\sqrt{2}$.
+\subsection{Part 3.c}
+$\operatorname{Arg}(z) = \pi/4$.
+\subsection{Part 3.d}
+$z = 1+i = \sqrt{2} \cos(\pi/4) + i \sqrt{2} \sin(\pi/4) 
+= \sqrt{2} \exp\p{i\pi/4}$.
+\subsection{Part 3.e}
+$\operatorname{Log}(z) = \ln\sqrt{2}+\pi/4$
+\subsection{Part 3.f}
+$\arg(z)=\pi/4+2\pi k$, $k\in \Z$.
+\subsection{Part 3.g}
+$\log(z) = \ln\sqrt{2} + i(\pi/4 + 2 k \pi)$, $k \in \Z$.
+
+\section{Problem 4}
+
+\[
+\lim_{z\to 0} \frac{z+\bar{z}}{\abs{z^2}}
+= \lim_{z\to 0} \frac{x+yi + x-yi}{\abs{x^2 - y^2 + 2xyi}}
+= \lim_{z\to 0} \frac{2x}{\abs{x^2-y^2 + 2xyi}}
+\]
+If we approach along the line $z=\operatorname{Re} z$, then
+$y=0$, so continuing the equation,
+\[ 
+= \lim_{x \to 0} \frac{2x}{\abs{x^2}} 
+= \lim_{x \to 0} \frac{2x}{x^2}
+= \lim_{x \to 0} \frac{2}{2x}
+= \infty
+\]
+However, if we approach along the line $z = i \operatorname{Im} z$, then
+\[ 
+= \lim_{y \to 0} \frac{2 \cdot 0}{\abs{0^2-y^2+0i}}
+= \lim_{y \to 0} \frac{0}{y^2}
+=0
+\]
+Thus the limit is not well-defined, and consequently cannot exist.
+
+\section{Problem 5}
+\subsection{Part 5.a}
+$0.5 + 0.5 i$ would be an interior point.
+\subsection{Part 5.b}
+$\pi - iG$, where $G$ is Graham's number (that is, $G=g_{64}$,
+where $g_1 = 3 \uparrow^4 3$ and $g_n = 3\uparrow^{g_{n-1}} 3$, 
+and $a \uparrow b = a^b$ and 
+$a \uparrow^n b = [x \to a \uparrow^{n-1} x]^{b-1} a$; see Knuth's
+up-arrow notation)
+would be an exterior point, since it is a bit away from $S$.
+
+\subsection{Part 5.c}
+$0$ is a boundary point, since any neighborhood of it contains a point
+with negative imaginary and real components, outside of $S$.
+\subsection{Part 5.d}
+Every neighborhood of $0$ contains a non-$0$ point of $S$. Thus, $S$
+is an accumulation point.
+\subsection{Part 5.e}
+No. It contains boundary point $0$.
+\subsection{Part 5.f}
+No. It does not contain boundary point $1+i$.
+
+\section{Problem 6}
+\subsection{Part 6.a}
+\begin{align*}
+f(z) 
+&= z^3 - 4z \\
+&= (x+yi)^3 - 4(x+yi) \\
+&= x^3 + 3x^2yi - 3 x y^2 - y^3 i - 4x - 4yi \\ 
+&= (x^3 - 3xy^2 - 4x) + i(3x^2 y - y^3 - 4y) 
+\end{align*}
+Thus, we may define $u,v$ to be
+\begin{align*}
+u(x,y) &= x^3 - 3xy^2 - 4x \\
+v(x,y) &= 3x^2 y - y^3 - 4y
+\end{align*}
+\subsection{Part 6.b}
+\begin{align*}
+u_x &= 3x^2 - 3y^2 - 4 \\
+u_y &= -6xy \\
+v_x &= 6xy = -u_y\\
+v_y &= 3x^2 - 3 y^2 - 4 = u_x 
+\end{align*}
+And thus $u$ and $v$ satisfy the Cauchy-Riemann equations.
+
+\section{Problem 7}
+\begin{theorem}
+\[ \lim_{z \to i} 2z^2 + 1 = -1 \]
+\end{theorem}
+\begin{proof}
+Suppose we are given some $\epsilon>0$. Then if 
+$\delta=\sqrt{1+\epsilon/2}-1$, then if $\abs{z-i} < \delta$,
+we know that 
+\[
+\abs{z+i}
+\le \abs{z-i} + \abs{2i}
+< \delta + 2
+\]
+Thus,
+\begin{align*}
+\abs{z-i} \cdot \abs{z+i} 
+&< \delta(\delta+2) \\
+\abs{z^2+1} 
+&< \p{\sqrt{1+\epsilon/2}-1}\p{\sqrt{1+\epsilon/2}+1} \\
+\abs{z^2+1}
+&< 1+\epsilon/2 - 1 = \epsilon/2 \\
+\abs{2z^2+2} &< \epsilon \\
+\abs{2z^2 + 1 - (-1)} &< \epsilon
+\end{align*}
+Thus, if $\abs{z-i} < \delta = \sqrt{1+\epsilon/2}-1$, then 
+$\abs{(2z^2+1)-(-1)} < \epsilon$. Consequently, $\lim_{z \to i} 2 z^2+1 = -1$.
+\end{proof}
+
+\section{Problem 8}
+It will be differentiable where it satisfies the Cauchy-Riemann equations.
+\begin{align*}
+u_x &= 2x \\
+u_y &= 0 \\
+v_x &= 0 \\
+v_y &= 2y 
+\end{align*}
+This only occurs when $2x=2y$, or $x=y$. This line is the only place
+where it is differentiable. However, this subset has empty interior,
+and thus the function is analytic nowhere.
+
+\section{Problem 9}
+\section{Part 9.a}
+\begin{align*}
+u_x &= 2x + 2 \\
+u_y &= 2y \\
+v_x &= -2y \tag{C-R}\\
+v_y &= 2x+2 \tag{C-R}\\
+\int v_x \;dx 
+&= \int -2y \;dx \\
+&= -2xy + C(y) \\
+\int v_y \;dy 
+&= \int 2x+2 \;dy \\
+&= 2xy+2y+C(x)
+\end{align*}
+These cannot meet in the same equation, since $2xy$ and $-2xy$ cannot
+be part of or canceled by $C(x)$ or $C(y)$.
+Thus, $u$ does not have a harmonic conjugate.
+
+\section{Part 9.b}
+\begin{align*}
+u_x &= y \\
+u_y &= x \\
+v_x &= -x \tag{C-R} \\
+v_y &= y \tag{C-R} \\
+\int v_x \;dx 
+&= \int -x \;dx \\
+&= -0.5 x^2 +C(y) \\
+\int v_y \;dy
+&= \int y \;dy \\
+&= 0.5 y^2 + C(x) \\
+v(x,y) &= -0.5x^2 + 0.5 y^2 + C
+\end{align*}
+Yes, $v$ in the last line is a harmonic conjugate of $u$.
+
+\section{Problem 10}
+For the first one, $z=w=-i$ works, since $(-i)^2=-1$, yet
+$\operatorname{Log}(-i) = -\pi/2$ and $\operatorname{Log}(-1) 
+= i\pi \neq -i\pi/2 + -i\pi/2$.
+
+For the second one, $z=i$ works. $\operatorname{Log}(i) 
+= i\pi/4$, $\operatorname{Log}(-i) = -i\pi/4 \neq 3i\pi/4$.
+
+\section{Problem 11}
+\subsection{Part 11.a}
+$i^4=1$.
+\subsection{Part 11.b}
+$4^{1/2} = \pm 2$.
+\subsection{Part 11.c}
+$\exp(7+\pi i) = e^7 \sq{\cos \pi + i \sin \pi} = e^7(-1) = -e^7$
+\subsection{Part 11.d}
+\begin{align*}
+(1+i)^i 
+&= \exp\p{ i \log (1+i) } \\
+&= \exp\p{ i \sq{\sqrt{2} + i(\pi/4 + 2\pi k}} \tag{$k \in \Z$}\\
+&= \exp\p{ i \sqrt{2} - \pi/4 - 2\pi k } \tag{$k \in \Z$}\\
+&= \exp\p{ i \sqrt{2}} \exp\p{-\pi/4 - 2 \pi k} \tag{$k \in \Z$}\\
+&= \exp\p{-\pi/4 - 2 \pi k} \sq{\cos\sqrt{2} + i\sin \sqrt{2}} \tag{$k \in \Z$}\\
+\end{align*}
+PV is $e^{-\pi/4} \sq{\cos \sqrt{2} + i\sin\sqrt{2}}$
+\subsection{Part 11.e}
+\begin{align*}
+\sin(\pi-i)
+&= \frac{\exp(i \pi + 1) - \exp(-i \pi - 1) }{2i} \\
+&= \frac{e^1 \exp(i \pi) - e^{-1} \exp(-i \pi) }{2i} \\
+&= \frac{e^1 \cos\pi + e^1 i\sin\pi - e^{-1} \cos \pi + e^{-1} i \sin\pi}{2i} \\
+&= \frac{e^1 (-1) - e^{-1} (-1)}{2i} \\
+&= \frac{-e^1  + e^{-1}}{2i} \\
+&= \frac{e^{-1} - e^1}{2i} \\
+&= \frac{e^{-1} - e^1}{2i} \frac{-2i}{-2i} \\
+&= \frac{-2i e^{-1} + 2i e^1}{4}\\
+&= \frac{1}{2} i e^1 - \frac{1}{2} i e^{-1}
+\end{align*}
+\subsection{Part 11.f}
+\begin{align*}
+\tan^{-1}(2i)
+&= \frac{i}{2} \log \frac{i+2i}{i-2i}\\
+&= \frac{i}{2} \log \frac{3i}{-i} \\
+&= \frac{i}{2} \log -3 \\
+&= \frac{i}{2} \sq{\ln 3 + i (\pi + 2 \pi k)} \\
+&= \frac{i \ln 3}{2} - \frac{\pi + 2 \pi k}{2} \\
+&= i\frac{\ln 3}{2} - \frac{\pi}{2} + \pi k \\
+\end{align*}
+PV at $i \frac{\ln 3}{2} - \pi/2$.
+
+\section{Problem 12}
+Consider an arbitrary $z \in \Co$. Then,
+\begin{align*}
+\overline{\cos(z)}
+&= \overline{\p{\frac{e^{iz}+e^{-iz}}{2}}}\\
+&= \frac{1}{2} \overline{e^{iz} + e^{-iz}} \\
+&= \frac{1}{2} \p{\overline{e^{iz}} + \overline{e^{-iz}} }\\
+&= \frac{1}{2} \p{e^{i\bar{z}} + e^{-i\bar{z}} }\\
+&= \cos(\bar{z})
+\end{align*}
+
+\section{Extra credit}
+It doesn't. Approaching from either cardinal axis ($x=0$, $y=0$) 
+yields an answer of $0$. Approaching along the parabola $y=x^2$, however,
+yields the answer
+\[ 
+\lim_{z\to 0} \frac{x^2 y}{x^4 + y^2}
+= \lim_{x\to 0} \frac{x^4}{x^4+x^4} 
+= \lim_{x\to 0} \frac{x^4}{2x^4} 
+= \lim_{x\to 0} \frac{1}{2}
+= \frac{1}{2}
+\]
+which is decidedly not $0$. Otherwise the Riemann Hypothesis would become 
+rather bizarre---or less bizarre, depending on how you look at it.
+\end{document}
