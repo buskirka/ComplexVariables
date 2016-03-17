@@ -1,0 +1,197 @@
+\documentclass{article}
+
+\title{Complex Variables Section 44 Homework}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+\allowdisplaybreaks[1]
+
+\begin{document}
+\maketitle
+
+p.\ 135 \# 4. p.\ 149 \# 2. p.\ 160 \# 4.
+
+\section{p.\ 135 \# 4}
+\begin{align*}
+\int_C f(z) \;dz
+&= \int_{-1}^1 f(z(t)) z'(t) \;dt \\
+&= \int_{-1}^1 f(t^3+ti) \cdot [3t^2 + i] \;dt \\
+&= \int_{-1}^0 f(t^3+ti) \cdot [3t^2 + i] \;dt + \int_{0}^1 f(t^3+ti) \cdot [3t^2 + i] \;dt
+\intertext{When $t>0$, $y>0$. Similarly, when $t<0$, $y<0$. So,}
+&= \int_{-1}^0 1 \cdot [3t^2 + i] \;dt + \int_{0}^1 4t \cdot [3t^2 + i] \;dt \\
+&= \int_{-1}^0 3t^2 \;dt+i\int_{-1}^0 1 \;dt + \int_{0}^1 12t^3 \;dt + i \int_{0}^1 4t \;dt \\
+&= \sq{t^3}_{-1}^0+i[1] + 3 \sq{t^4}_0^1 + 2i \sq{t^2}_0^1 \\
+&= -1+i + 3 + 2i \\
+&= 2 + 3i \\
+\end{align*}
+
+\section{p.\ 148 \# 2}
+\subsection{Part a}
+$e^{\pi z}$ is entire so it has an antiderivative. We define an antiderivative by the integral
+from $0$ to $z$ along the polygonal path $C$ from $0$ to $x+0i$ to $x+yi=z$.
+\begin{align*}
+F(z)
+&= \int_C f(z) \;dz \\
+&= \int_{C_1} f(z) \;dz + \int_{C_2} f(z) \;dz \\
+&= \int_0^x f(t) (1) \;dt + \int_0^y f(x+ti) (1) \;dt \\
+&= \int_0^x e^{\pi t} \;dt + \int_0^y e^{\pi x} e^{i \pi y} \;dt \\
+&= \sq{\frac{e^{\pi x}}{\pi} - \frac{1}{\pi}} + e^{\pi x} \sq{ \frac{e^{\pi t i}}{\pi} }_0^y \\
+&= \sq{\frac{e^{\pi x}}{\pi} - \frac{1}{\pi}} + \frac{e^{\pi x}}{\pi} \sq{ e^{i \pi y}-1 }\\
+&= \frac{1}{\pi} \sq{e^{\pi x} - 1 + e^{\pi z} - e^{\pi x}} \\
+&= \frac{e^{\pi z}}{\pi} - \frac{1}{\pi} 
+\end{align*}
+Then 
+$\int_{i}^{i/2} e^{\pi z} \;dz 
+= F(i/2) - F(i) 
+= \pi^{-1} e^{\pi i/2} - \pi^{-1} e^{\pi i}
+= \frac{i}{\pi} - \frac{-1}{\pi}
+= (1+i)/\pi$.
+
+\subsection{Part b}
+By a similar construction,
+\begin{align*}
+F(z)
+&= \int_0^x \cos(t/2) \;dt + \int_0^y \cos\p{\frac{x+ti}{2}} i \;dt \\
+&= 2 \sin\p{\frac{x}{2}} + i\int_0^y \cos\p{\frac{x+ti}{2}} \;dt \\
+&= 2 \sin\p{\frac{x}{2}} + i\frac{1}{2} \int_0^y \exp\p{\frac{ix-t}{2}} + \exp\p{\frac{t-ix}{2}} \;dt \\
+&= 2 \sin\p{\frac{x}{2}} + i\frac{1}{2} \int_0^y \exp\p{\frac{ix-t}{2}} \;dt + i\frac{1}{2} \int_0^y \exp\p{\frac{t-ix}{2}} \;dt \\
+&= 2 \sin\p{\frac{x}{2}} + i\frac{1}{2} e^{ix/2} \int_0^y \exp\p{-\frac{t}{2}} \;dt + i\frac{1}{2} e^{-ix/2} \int_0^y \exp\p{\frac{t}{2}} \;dt \\
+&= 2 \sin\p{\frac{x}{2}} + i\frac{1}{2} e^{ix/2} \sq{-2e^{-t/2}}_0^y + i\frac{1}{2} e^{-ix/2} \sq{2 e^{t/2}}_0^y \\
+&= 2 \sin\p{\frac{x}{2}} + ie^{-ix/2} \sq{e^{t/2}}_0^y - ie^{ix/2} \sq{e^{-t/2}}_0^y \\
+&= 2 \sin\p{\frac{x}{2}} + ie^{-ix/2} \sq{e^{y/2}-1} - ie^{ix/2} \sq{e^{-y/2}-1}
+\end{align*}
+Then
+\begin{align*}
+F(\pi+2i) - F(0)
+&= \sq{2 \sin(\pi/2) + ie^{-i\pi/2}(e-1) - ie^{i\pi/2}(e^{-1}-1)}
+- \sq{2 \sin(0/2) + ie^{-i\pi}(1-1) - ie^{i\pi}(1-1)}\\
+&= \sq{2 + i(-i)(e-1) - i(i)(e^{-1}-1)} - 0 \\
+&= 2 + e - 1 + e^{-1} - 1 \\
+&= e + e^{-1}
+\end{align*}
+\subsection{Part c}
+\begin{align*}
+F(z)
+&= \int_0^x (t-2)^3 \;dt + \int_0^y (x+ti-2)^3) i \;dt \\
+&= \int_0^x (t-2)^3 \;dt + \int_{x-2}^{y+x-2} (ti)^3 i \;dt \\
+&= \int_{-2}^{x-2} t^3 \;dt + \int_{x-2}^{y+x-2} t^3 \;dt \\
+&= \int_{-2}^{y+x-2} t^3 \;dt \\
+&= \sq{\frac{t^4}{4}}_{-2}^{y+x-2} \\
+&= \frac{(y+x-2)^4}{4} - \frac{32}{4} \\
+&= \frac{(y+x-2)^4}{4} - 8 \\
+\end{align*}
+
+So $F(3)-F(1) = 1^4/4 - 8 - (-1)^4/4 + 8 = 0$.
+
+\section{p.\ 160 \# 4}
+\subsection{4.a}
+Label the right edge $C_1$, the top $C_2$, left $C_3$, and bottom $C_4$.
+
+To obtain the top edge $C_2$,
+\begin{align*}
+\int_{C_2} e^{-z^2} \;dz
+&= \int_a^{-a} e^{-(x+bi)^2}  \;dx \\
+&= -\int_{-a}^a e^{-x^2 + b^2 - 2xbi} \;dx \\
+&= -\int_{-a}^a e^{b^2 -x^2 - 2xbi} \;dx \\
+&= -\int_{-a}^a e^{b^2} e^{- x^2} e^{-2xbi} \;dx \\
+&= -e^{b^2} \int_{-a}^a e^{- x^2} e^{-2xbi} \;dx \\
+&= -e^{b^2} \int_{-a}^a e^{- x^2} \sq{\cos(2xb)-i\sin(2xb)} \;dx \\
+&= -e^{b^2} \int_{-a}^a e^{- x^2} \cos(2xb)\;dx -i \int_{-a}^a e^{- x^2} \sin(2xb) \;dx
+\intertext{Since $e^{-x^2}$ is even and $\sin(2xb)$ is odd, the right (imaginary) half integrates to $0$. 
+Similarly, the left side is all even, so it may be subdivided:}
+&= -2e^{b^2} \int_{0}^a e^{- x^2} \cos(2xb)\;dx 
+\end{align*}
+We obtain $C_4$ by flipping the sign (to reverse direction) and setting $b \gets 0$, obtaining
+$2\int_{0}^a e^{-x^2} \;dx$. Thus, the sum of the horizontal edges is
+\[
+2 \int_0^a e^{-x^2} \;dx - 2 e^{b^2} \int_0^a e^{-x^2} \cos(2xb) \;dx
+\]
+
+For $C_1$, 
+\begin{align*}
+\int_{C_1} e^{-z^2} \;dz 
+&= \int_0^b e^{-(a+ti)^2}i \;dz \\
+&= i\int_0^b e^{-a^2 + y^2 -2ayi} \;dy \\
+&= i\int_0^b e^{-a^2} e^{y^2} e^{-2ayi} \;dy \\
+&= ie^{-a^2} \int_0^b  e^{y^2} e^{-2ayi} \;dy
+\end{align*}
+To obtain $C_3$, negate the integral for $C_1$ and $a \gets -a$, yielding
+\[
+\int_{C_3} e^{-z^2} \;dz 
+= -ie^{-a^2} \int_0^b  e^{y^2} e^{2ayi} \;dy
+\]
+Summing these yields 
+\[
+i e^{-a^2} \int_0^b e^{y^2} e^{-2ayi} \;dy
+- i e^{-a^2} \int_0^b e^{y^2} e^{2ayi} \;dy
+\]
+By the Cauchy-Goursat theorem, these sum to $0$:
+\[
+0
+=2 \int_0^a e^{-x^2} \;dx 
+- 2 e^{b^2} \int_0^a e^{-x^2} \cos(2xb) \;dx
++ i e^{-a^2} \int_0^b e^{y^2} e^{-2ayi} \;dy
+- i e^{-a^2} \int_0^b e^{y^2} e^{2ayi} \;dy
+\]
+\[
+2e^{b^2} \int_0^a e^{-x^2} \cos(2xb) \;dx
+=
+2 \int_0^a e^{-x^2} \;dx 
++ i e^{-a^2} \int_0^b e^{y^2} e^{-2ayi} \;dy
+- i e^{-a^2} \int_0^b e^{y^2} e^{2ayi} \;dy
+\]
+\[
+ \int_0^a e^{-x^2} \cos(2xb) \;dx
+=
+e^{-b^2} \int_0^a e^{-x^2} \;dx 
++ 0.5 i e^{-(a^2+b^2)} \int_0^b e^{y^2} e^{-2ayi} \;dy
+- 0.5 i e^{(-a^2+b^2)} \int_0^b e^{y^2} e^{2ayi} \;dy
+\]
+\[
+\int_0^a e^{-x^2} \cos(2xb) \;dx
+=
+e^{-b^2} \int_0^a e^{-x^2} \;dx 
++ e^{-(a^2+b^2)} \int_0^b e^{y^2} \sin(2ay) \;dy
+\]
+
+\subsection{4.b}
+\begin{align*}
+\lim_{a\to\infty} 
+\int_0^a e^{-x^2} \cos(2xb) \;dx
+&= \lim_{a\to\infty} 
+e^{-b^2} \int_0^a e^{-x^2} \;dx 
++ \lim_{a\to\infty} e^{-(a^2+b^2)} \int_0^b e^{y^2} \sin(2ay) \;dy \\
+&= 
+e^{-b^2} \lim_{a\to\infty} \int_0^a e^{-x^2} \;dx 
++ \lim_{a\to\infty} e^{-(a^2+b^2)} \int_0^b e^{y^2} \sin(2ay) \;dy \\
+&= 
+e^{-b^2}  \frac{\pi}{2}
++ \lim_{a\to\infty} e^{-(a^2+b^2)} \int_0^b e^{y^2} \sin(2ay) \;dy
+\intertext{Since $\abs{\int_0^b e^{y^2} \sin(2ay)\;dy} \le \int_0^b e^{y^2} \;dy$, this integral is
+bounded as a function in $a$. Since 
+$\lim_{a\to\infty} e^{-(a^2+b^2)}=0$, the limit of the product of a bounded function and a $0$-limit
+function is $0$. Thus,}
+&= \frac{\pi e^{-b^2}}{2} + 0 \\
+&= \frac{\pi e^{-b^2}}{2}
+\end{align*}
+\end{document}
