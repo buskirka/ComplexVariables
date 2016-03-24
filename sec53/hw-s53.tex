@@ -1,0 +1,94 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 53}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+\begin{quotation}
+Evaluate
+\[
+\int_C \frac{e^{2z}}{z^{k+1}} \;dz
+\]
+for $k=-1,0,1,2,3$ and $C$ the unit circle.
+\end{quotation}
+
+For $k=-1$, then we have
+\[ 
+\int_C \frac{e^{2z}}{z^0} \;dz 
+= \int_C e^{2z} \;dz
+= 0
+\]
+Since in this case $e^{2z}$ is entire, the integral is $0$.
+
+For $k=0$, 
+\[
+\int_C \frac{e^{2z}}{(z-0)^1} \;dz
+= \frac{2\pi i}{0!} f^{(0)}(z_0)
+= 2 \pi i e^{2(0)}
+= 2 \pi i
+\]
+
+For $k=1$,
+\[
+\int_C \frac{e^{2z}}{(z-0)^2} \;dz
+= \frac{2 \pi i}{1!} f'(0)
+= 2 \pi i \cdot 2 e^{2(0)}
+= 4 \pi i
+\]
+
+For $k=2$,
+\[
+\int_C \frac{e^{2z}}{(z-0)^3} \;dz
+= \frac{2 \pi i}{2!} f''(0)
+= \frac{2 \pi i}{2} \cdot 4 e^{2(0)}
+= 4 \pi i
+\]
+
+For $k=3$,
+\[
+\int_C \frac{e^{2z}}{(z-0)^4} \;dz
+= \frac{2 \pi i}{3!} f^{(3)}(0)
+= \frac{2 \pi i}{6} \cdot 8 e^{2(0)}
+= \frac{8 \pi i}{3}
+\]
+
+\section{Problem 2}
+Evaluate
+\[
+\int_C \frac{z^2+\sin z}{(z-1)^3} \;dz
+\]
+where $C$ is any contour around $1$.
+
+\[ 
+\int_C \frac{z^2 + \sin z}{(z-1)^3} \;dz
+= \frac{2 \pi i}{2!} f''(1)
+= \pi i \sq{2-\sin 1}
+= 2\pi i - \pi  i \sin(1)
+\]
+
+\end{document}
