@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\title{Complex Variables Homework Section 54}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+\section{Problem 6}
+\begin{theorem}
+Let $f(z) = u(x,y) + i v(x,y)$ be a function that is continuous on a closed bounded region $R$ and analytic
+and not constant throughout the interior of $R$. Then the component function $u(x,y)$ has a minimum value
+in $R$ which occurs on the boundary of $R$ and never in the interior.
+\end{theorem}
+\begin{proof}
+The function $u$ maps a compact subset of $\R^2$ to $\R$, and thus since $u$ is continuous,
+$u(R)$ is compact and thus contains its boundary. Thus, there must exist some $z' \in R$ such
+that $u(z') = \min u(R)$.
+
+Consider $g(z) = \exp(f(z))$. $g$ is the composition of two analytic functions 
+and thus is analytic. So the minimum of $|g(z)|$ on $R$ occurs on the boundary.
+But $|g(z)|=\abs{\exp(u(x,y)+iv(x,y))} 
+= \abs{\exp\p{u(x,y)}} \cdot \abs{\exp\p{iv(x,y)}}
+= \abs{\exp u(x,y)}
+= \exp u(x,y)$. Since $\exp$ is a monotonically increasing function on $\R$, the
+minimum value of $|g(z)|=\exp u(x,y)$ occurs on the boundary of $R$ and not in 
+the interior.
+\end{proof}
+
+\section{Problem 7}
+\begin{quotation}
+Let $f(z)=e^z$ and $R$ the region $0 \le x \le 1$, $0 \le y \le \pi$. Find points in 
+$R$ where $u(x,y)$ reaches its maximum and minimum values.
+\end{quotation}
+
+Decompose the region $R$ with the cell decomposition (viewing, momentarily,
+the complex number line as $\R^2$ equipped with complex multiplication),
+\[
+\set{
+\underbrace{\{(0,0)\},
+\{(1,0)\},
+\{(1,\pi)\},
+\{(0,\pi)\}}_{0\text{-cells}},
+\underbrace{(0,1) \times \{0\},
+(0,1) \times \{\pi\},
+\{0\} \times (0,\pi),
+\{1\} \times (0,\pi)}_{1\text{-cells}},
+\underbrace{(0,1) \times (0,\pi)}_{2\text{-cell}}
+}
+\]
+We know the maximum and minimum values cannot occur on the 2-cell, since
+this entirely is in the interior of $R$. 
+
+The $0$-cells have values $e^0=1$, $e^1=e$, $e^{1+\pi i}=e(-1)=-e$, and $e^{\pi i}=-1$.
+Since these are all real, the max and min of $u$ on the $0$-skeleton 
+of $R$ are $e$ and $-e$ respectively.
+
+$f(z) = e^z = e^{x+yi} = e^x \sq{\cos(y)+i\sin(y)}$. So 
+$u_x = e^x \cos(y)$, and $u_y = -e^x \sin(y)$. 
+
+The first 1-cell listed above has extrema where
+$u_x(t,0) = 0 = e^t \cos(0) = e^t$. This cannot occur.
+
+The second 1-cell has extrema where
+$u_x(t,\pi) = 0 = e^t \cos(\pi) = -e^t$. Again, this is impossible.
+
+The third 1-cell has extrema where
+$u_y(0,t) = 0 = -e^0 \sin(t) = - \sin (t)$. This only occurs at multiples
+of $\pi$, which this cell contains none of.
+
+The fourth 1-cell has extrema where
+$u_y(1,t) = 0 = -e^1 \sin(t) = -e \sin(t)$. This also only occurs at multiples
+of $\pi$, which this cell contains none of.
+
+Thus, the $1$-skeleton of this cell decomposition of $R$ contains no extrema.
+
+Since $R$ has $0$-skeleton maximum at $(1,0)$ and minimum at $(1,\pi)$, 
+and no $n$-skeleton for $n>0$ contains any extrema, $(1,0)$ is the maximum
+and $(1,\pi)$ is the minimum for $u$ on $R$.
+
+\end{document}
