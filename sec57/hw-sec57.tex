@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.25in]{geometry}
+
+\author{Adam Buskirk}
+\title{Complex Variables Section 57 Homework}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+\[ 
+f(z)=\begin{cases}
+z^{-1}\sin(z) & \text{if } x \neq 0 \\
+1 & \text{if } x = 0
+\end{cases}
+\]
+
+On $\mathbb{C} \setminus \{0\}$, 
+\begin{align*}
+f(z) 
+&= z^{-1} \sum_{n=0}^\infty (-1)^n \frac{z^{2n+1}}{(2n+1)!} \\
+&= \sum_{n=0}^\infty (-1)^n \frac{z^{2n}}{(2n+1)!} \\
+&= \sum_{n=0}^\infty \frac{(-1)^n}{2n+1} \cdot \frac{z^{2n}}{(2n)!} \\
+\end{align*}
+which can be naturally extended to all of $\mathbb{C}$.
+\section{Problem 2}
+In the first derivative, the first term drops out.
+\begin{align*}
+f'(z)
+&= \sum_{n=1}^\infty \frac{(-1)^n}{2n+1} \cdot \frac{z^{2n-1}}{(2n-1)!} \\
+f^{(2)}(z)
+&= \sum_{n=1}^\infty \frac{(-1)^n}{2n+1} \cdot \frac{z^{2n-2}}{(2n-2)!} \\
+\intertext{In the third derivative, another term is forced to drop out.}
+f^{(3)}(z)
+&= \sum_{n=2}^\infty \frac{(-1)^n}{2n+1} \cdot \frac{z^{2n-3}}{(2n-3)!} \\
+f^{(4)}(z)
+&= \sum_{n=2}^\infty \frac{(-1)^n}{2n+1} \cdot \frac{z^{2n-4}}{(2n-4)!} \\
+\end{align*}
+Thus, 
+$f^{(4)}(0) = (-1)^2 (2 (2) + 1)^{-1} (0!)^{-1} = 1 / 5 = 0.2$.
+
+
+
+\end{document}
