@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\title{Complex Variables Section 56 Homework}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+Page 188 : 3
+
+Prove that if $\abs{z_n} \to 0$, then $z_n \to 0$.
+
+Converge or diverge: $\sum_{k=1}^\infty (i/2)^k$, 
+$\sum_{k=1}^\infty (1-i)^k$.
+
+\section{Page 188, \#3}
+\begin{theorem}
+If $\lim_{n\to\infty} z_n = z$, then $\lim_{n \to \infty} \abs{z_n} = \abs{z}$.
+\end{theorem}
+\begin{proof}
+Suppose $z_n \to z$. Then for any $\epsilon>0$, there exists $N$ such that if
+$n \ge N$, then
+\[
+\abs{z_n - z} < \epsilon
+\]
+\[
+\abs{\abs{z_n}-\abs{z}} \le \abs{z_n - z} < \epsilon
+\]
+Thus, for any $\epsilon$ there exists $N$ such that 
+\[ \abs{\abs{z_n} - \abs{z}} < \epsilon \]
+so $\abs{z_n} \to \abs{z}$.
+\end{proof}
+
+\section{Modulus convergence}
+\begin{theorem}
+If $|z_n| \to 0$, then $z_n \to 0$.
+\end{theorem}
+\begin{proof}
+For an arbitrary $\epsilon$, 
+there exists some $N$ such that
+$n \ge N \implies |z_n - 0| = |z_n| < \epsilon$.
+Then $\sqrt{x_n^2 + y_n^2} < \epsilon$, so
+$x_n^2 + y_n^2 < \epsilon^2$
+so $x_n^2 < \epsilon^2$ and $y_n^2 < \epsilon$, 
+and thus $\abs{x_n-0} < \epsilon$ and 
+$\abs{y_n-0} < \epsilon$. Since
+$\epsilon$ was arbitrary, $x_n \to 0$ and $y_n \to 0$.
+Thus $z_n = x_n + i y_n \to 0 + i 0 = 0$.
+\end{proof}
+
+\section{Converge or diverge}
+\subsection{First one}
+\[ 
+\sum_{k=1}^\infty (i/2)^k
+= i/2 - 1/4 - i/8 + 1/16 + \cdots
+= \sum_{k=1}^\infty \p{-\frac{1}{4}}^k 
+- i \frac{1}{2} \sum_{k=1}^\infty \p{-\frac{1}{4}}^{k-1}
+\]
+The summations work out individually, utilizing the ratio test, 
+so the complex sums converge also.
+
+\subsection{Second one}
+This cannot converge, since the underlying sequence does not converge
+to $0$; by the ratio test,
+\[ \abs{\frac{(1-i)^{k+1}}{(1-i)^k}} = \abs{1-i} = \sqrt{2} > 1 \]
+And since the sequence being summed does not converge to $0$, the summation
+itself cannot converge.
+
+\end{document}
