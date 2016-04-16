@@ -30,8 +30,22 @@
 
 \section{Problem 1}
 Evaluate \[ \int_C \frac{z+1}{z-1} \;dz \]
+where $C$ is a positively oriented contour around $1$.
 
 \section{Problem 2}
-Find the Laurent series for \[ f(z)= \frac{2}{1-z^2} + \frac{1}{1+z} \]
+Find the Laurent series for 
+\[ f(z)= \frac{2}{1-z^2} = \frac{1}{1-z} + \frac{1}{1+z} \]
 
+We utilize example 4 in the text, on page 194.
+\begin{align*}
+f(z) &= \frac{1}{1-z} + \frac{1}{1+z} \\
+&= \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty (-z)^n \\
+&= \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty (-1)^n z^n \\
+&= \sum_{n \in 2\N} z^n \tag{Note the change of index! We assume $0\in\N$.}\\
+&= \sum_{n=0}^\infty z^{2n} \\
+&= \sum_{n=0}^\infty (z^2)^n \\
+&= 2 \frac{1}{1-z^2} \\
+&= \frac{2}{1-z^2} \\
+&= f(z)
+\end{align*}
 \end{document}
