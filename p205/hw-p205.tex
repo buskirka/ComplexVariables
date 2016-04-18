@@ -13,6 +13,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}[subsection]{Definition}
 
+\allowdisplaybreaks[1]
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -28,9 +30,57 @@
 \begin{document}
 \maketitle
 
+\section{Problem 5, p.\ 206}
+\[ f(z) = \frac{z+1}{z-1} \]
+\subsection{Part a}
+To obtain a Maclaurin series for this, first we must compute the derivatives.
+\begin{align*}
+f(z)
+&= \frac{z+1}{z-1} \\
+f'(z)
+&= \frac{1}{z-1} + (-1) \frac{z+1}{(z-1)^2} \\
+&= \frac{z-1}{(z-1)^2} - \frac{z+1}{(z-1)^2} \\
+&= 2\frac{(-1)^1 \cdot 1!}{(z-1)^{1+1}}
+\intertext{Suppose then that $f^{(n)}(z)$ is of the form $2 (-1)^n n! / (z-1)^{n+1}$,
+as is above for $n=1$.}
+f^{(n+1)}(z) 
+&= (-n-1) \cdot 2 \frac{(-1)^n \cdot n!}{(z-1)^{n+2}}\\
+&= 2 \frac{(-1)^{n+1} \cdot (n+1)!}{(z-1)^{n+2}} 
+\intertext{which is also of that form. Thus, by induction, for $n \ge 1$,}
+f^{(n)}(z)
+&= 2 \frac{(-1)^n \cdot n!}{(z-1)^{n+1}}
+\end{align*}
+Thus, the coefficients $a_n$ of our Maclaurin series are $a_0=-1$ and
+\[
+a_n 
+= \frac{f^{(n)}(0)}{n!}
+= \frac{1}{n!} \cdot 2 \frac{(-1)^n \cdot (n!)}{(0-1)^{n+1}}
+= -2
+\]
+Thus,
+\[
+f(z)
+= -1 - 2 \sum_{n=1}^\infty z^n
+\]
+and since the analytic circle around this only ends at $R_0=1$, 
+this Maclaurin series holds for the disk $|z|<1$.
+
+\subsection{Part b}
+
+
 \section{Problem 1}
 Evaluate \[ \int_C \frac{z+1}{z-1} \;dz \]
 where $C$ is a positively oriented contour around $1$.
+
+Observe first that 
+\begin{align*}
+\frac{z+1}{z-1}
+&= \frac{z}{z-1} + \frac{1}{z-1} \\
+&= \frac{1}{\frac{z}{z} -\frac{1}{z}} + \frac{1}{z-1} \\
+&= \frac{1}{1-z^{-1}} + \frac{1}{z-1} \\
+&= \frac{1}{1-z^{-1}} - \frac{1}{1-z} \\
+&= \sum_{n=0}^\infty z^{-n} - \sum_{n=0}^\infty z^n
+\end{align*}
 
 \section{Problem 2}
 Find the Laurent series for 
@@ -48,4 +98,5 @@ f(z) &= \frac{1}{1-z} + \frac{1}{1+z} \\
 &= \frac{2}{1-z^2} \\
 &= f(z)
 \end{align*}
+Thus, the Laurent series for $f(z)$ is $\sum_{n=0}^\infty z^{2n}$.
 \end{document}
