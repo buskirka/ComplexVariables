@@ -1,0 +1,3 @@
+p.\ 225 \# 5
+
+Evaluate $\int_C \frac{5}{e^z-e^{-z}} \;dz$ around the unit circle.

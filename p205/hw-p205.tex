@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\title{Homework 2016-04-12}
+\title{Homework 2016-04-14}
 \author{Adam Buskirk}
 
 \usepackage{amssymb,amsmath,amsthm}
@@ -66,20 +66,46 @@ and since the analytic circle around this only ends at $R_0=1$,
 this Maclaurin series holds for the disk $|z|<1$.
 
 \subsection{Part b}
-
+For the Laurent series, 
+\begin{align*}
+\frac{z+1}{z-1}
+&= \\
+&= \cdots \\
+&= 1+2\sum_{n=1}^\infty \frac{1}{z^n}
+\end{align*}
+since
+\begin{align*}
+a_n 
+&= \frac{1}{2 \pi i} \int_C \frac{f(z)}{(z-0)^{n+1}} \;dz \\
+&= \frac{1}{2 \pi i} \int_C \frac{\frac{z+1}{z-1}}{z^{n+1}} \;dz \\
+&= \frac{1}{2 \pi i} \int_C \frac{z+1}{(z-1)z^{n+1}} \;dz \\
+&= \frac{1}{2 \pi i} \int_C \frac{1}{(z-1) z^n} + \frac{1}{(z-1) z^{n+1}} \;dz
+\end{align*}
+I do not understand how to continue this but I also do not want to delay handing
+in this assignment even further. Previous attempts based on re-evaluating the 
+interior of those integrals as
+\[ \frac{\frac{1}{z-1}}{z^n} \]
+and applying the Cauchy integral formula lead to the conclusion that $a_n = 2$
+or something of that sort, and this is evidently not the case based on the 
+answer in the book; and no progress was made with $b_n$.
 
 \section{Problem 1}
 Evaluate \[ \int_C \frac{z+1}{z-1} \;dz \]
 where $C$ is a positively oriented contour around $1$.
 
-Observe first that 
+Expand $C$ to be the positively oriented circle contour 
+of radius 2 around $0$, so that it lies
+entirely within the domain of the Laurent series representation.
+
 \begin{align*}
-\frac{z+1}{z-1}
-&= \frac{z}{z-1} + \frac{1}{z-1} \\
-&= \frac{1}{\frac{z}{z} -\frac{1}{z}} + \frac{1}{z-1} \\
-&= \frac{1}{1-z^{-1}} + \frac{1}{z-1} \\
-&= \frac{1}{1-z^{-1}} - \frac{1}{1-z} \\
-&= \sum_{n=0}^\infty z^{-n} - \sum_{n=0}^\infty z^n
+\int_C \frac{z+1}{z-1} \;dz 
+&= \int_C 1+2 \sum_{n=1}^\infty \frac{1}{z^n} \;dz \\
+&= \int_C 1 \;dz + 2 \sum_{n=1}^\infty \int_C \frac{1}{z^n} \;dz \\
+&= 0 + 2\int_C \frac{1}{z} \;dz + 2 \sum_{n=1}^\infty \int_C \frac{1}{z^{n+1}} \;dz
+\intertext{Utilizing the Cauchy integral formula, and specifically
+example 2 on page 168,}
+&= 0 + 2 (2 \pi i) +2 \sum_{n=1}^\infty 0 \\
+&= 4 \pi i
 \end{align*}
 
 \section{Problem 2}
