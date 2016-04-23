@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\title{Complex Variables p.\ 225 Assignment}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+p.\ 225, \# 5.
+
+Evaluate \[\int_C \frac{5}{e^z-e^{-z}} \;dz\] around the unit circle.
+
+\section{Problem \#5.}
+\[
+\frac{1}{1+z^2/3!+z^4/5! + \cdots}
+= d_0 + d_1 z^1 + d_2 z^2 + d_3 z^3 + \cdots
+\]
+\[
+1 
+= \p{\sum_{n=0}^\infty \frac{z^{2n}}{(2n+1)!} }
+\p{\sum_{n=0}^\infty d_n z^n }
+= \sum_{n=0}^\infty 
+\p{\sum_{2a+b=n} \frac{d_b}{(2a+1)!} } z^{2a+b}
+\]
+\[
+= \p{\frac{d_0}{1!}}z^0 % n=0
++ \p{\frac{d_1}{1!}}z^1 % n=1: (0,1)
++ \p{\frac{d_0}{3!}+\frac{d_2}{1!}}z^2 % n=2: (1,0), (0,2)
++ \p{\frac{d_1}{3!}+\frac{d_3}{1!}}z^3 % n=3: (1,1), (0,3)
++ \p{\frac{d_0}{5!}+\frac{d_2}{3!}+\frac{d_4}{1!}}z^4 % n=4: (2,0),(1,2),(0,4)
++ \cdots
+\]
+Thus, 
+\begin{align*}
+1 &= \frac{d_0}{1!} = d_0 & d_0 &= 1\\
+0 &= \frac{d_1}{1!} = d_1 & d_1 &= 0\\
+0 &= \frac{d_0}{3!} + \frac{d_2}{1!} = 1/3 + d_2 & d_2 &= -1/3\\
+0 &= 0/3! + d_3/1! = d_3 & d_3 &= 0\\
+0 &= d_0/5! + d_2/3! + d_4/1! = 1/5! - (1/3)/3! + d_4 \\
+& \qquad= 1/120-1/18+d_4 & d_4 &= 17/360
+\end{align*}
+
+\section{Evaluate}
+\begin{align*}
+\int_C \frac{5}{e^z-e^{-z}} \;dz
+&= \int_C \frac{10}{\sinh z} \;dz 
+= 10 \int_C \frac{1}{\sum_{n=0}^\infty z^{2n+1}/(2n+1)!} \;dz
+\intertext{This is basically the same Laurent series as in 
+Problem \#5, so we'll just copy that and multiply by $1/z$.}
+&= 10 \int_C \frac{1}{z} \p{1 - \frac{1}{3}z^2 + \frac{17}{360}z^4 + \cdots} \;dz
+= 10 \int_C  \p{\frac{1}{z} - \frac{1}{3}z + \frac{17}{360}z^3 + \cdots} \;dz
+\intertext{Breaking the integral over the sum, only the first term has 
+nontrivial integral (it is the only term which is not analytic on all of $\Co$)
+and therefore}
+&= 10 \int_C  \frac{1}{z} \;dz + 0 + 0 + \cdots 
+= 10 (2 \pi i) 
+= 20 \pi i
+\end{align*}
+\end{document}

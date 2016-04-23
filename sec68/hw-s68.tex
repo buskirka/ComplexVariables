@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\title{TITLE}
+\author{Adam Buskirk}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem{lemma}[subsection]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\p}[1]{\left(#1\right)}
+\newcommand{\sq}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% \newcommand{\p}[1]{\left(#1\right)}
+
+\begin{document}
+\maketitle
+
+Show that 
+\[
+\int \frac{\sin t}{17+8 \cos 2 t} \;dt = -\frac{1}{12} \tan^{-1}\p{\frac{4}{3} \cos t} + C
+\]
+and
+\[
+\int \frac{\cos t}{17+8 \cos 2t} \;dt 
+= \frac{1}{40} \ln \abs{5+4\sin t} - \frac{1}{40} \ln\abs{5-4\sin t} + C
+\]
+
+\end{document}
