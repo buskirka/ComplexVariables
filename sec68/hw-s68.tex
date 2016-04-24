@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\title{TITLE}
+\title{Complex Variables Assignment Section 68}
 \author{Adam Buskirk}
 
 \usepackage{amssymb,amsmath,amsthm}
@@ -37,5 +37,19 @@ and
 \int \frac{\cos t}{17+8 \cos 2t} \;dt 
 = \frac{1}{40} \ln \abs{5+4\sin t} - \frac{1}{40} \ln\abs{5-4\sin t} + C
 \]
+
+\section{Problem 1}
+\begin{align*}
+\int \frac{\sin t}{17+8\cos 2t} \;dt
+&= \int \frac{\sin t}{25-16 \sin^2 t} \;dt \tag{Double-angle formula} \\
+&= \frac{1}{8} \int \frac{1}{5-4\sin t} \;dt 
+- \frac{1}{8} \int \frac{1}{5+4\sin t} \;dt \\
+&= \frac{1}{32} \int \frac{1}{5/4-\sin t} \;dt 
+- \frac{1}{32} \int \frac{1}{5/4+\sin t} \;dt \\
+\end{align*}
+
+\section{Problem 2}
+\begin{align*}
+\end{align*}
 
 \end{document}
