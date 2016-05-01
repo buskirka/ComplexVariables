@@ -32,26 +32,92 @@
 
 \section{Problem 1}
 We decompose $S$ into four portions.
+%\begin{align*}
+%\int_S \bar{z} \;dz
+%&= 
+%  \int_0^2 (x) (1) \;dx
+%+ \int_0^2 (2-yi)(i) \;dy
+%+ \int_2^0 (x-2i)(-1) \;dx
+%+ \int_2^0 (yi)(-i) \;dy \\
+%&=
+%  \int_0^2 x \;dx
+%+ \int_0^2 2i+y \;dy 
+%+ \int_0^2 x-2i \;dx
+%+ \int_0^2 -y \;dy 
+%\intertext{Canceling, by replacing $y$'s with $x$'s:}
+%&=
+%  \int_0^2 x \;dx
+%+ \int_0^2 2i+x \;dx 
+%+ \int_0^2 x-2i \;dx
+%+ \int_0^2 -x \;dx \\
+%&=
+%  \int_0^2 x - x \;dx
+%+ \int_0^2 (2i+x) + (x-2i) \;dx \\
+%&= \int_0^2 2x \;dx \\
+%&= \sq{x^2}_0^2 \\
+%&= 4
+%\end{align*}
+
+From $0$ to $2$ ($S_1$):
+The integral is $2$, since this reduces to a simple real integral $\int_0^2 x \;dx$.
+
+From $2$ to $2+2i$ ($S_2$):
 \begin{align*}
-\int_S \bar{z} \;dz
-&= 
-  \int_0^2 x \;dx
-+ \int_0^2 2+yi \;dy
-+ \int_2^0 x+2i \;dx
-+ \int_2^0 yi \;dy \\
-&= 
-  \int_0^2 x \;dx
-+ 4+i\int_0^2 y \;dy
-- \int_0^2 x \;dx-4i
-- i\int_0^2 y \;dy \\
-&= 
-  4-0
-+ 4+i(4-0)
-- (4-0)-4i
-- i(4-0) \\
-&= 4+4+4i-4-4i-4i \\
-&= 4-4i
+z(t) &= 2(1-t) + (2+2i)t \\
+&= 2 - 2t + 2t + 2it \\
+&= 2 + 2it \\
+z'(t) &= 2i \\
+\int_{S_2} f(z) \;dz
+&= \int_0^1 f(z(t)) z'(t) \;dt \\
+&= \int_0^1 \overline{2+2it} \cdot 2i \;dt \\
+&= \int_0^1 (2-2it) \cdot 2i \;dt \\
+&= \int_0^1 4i+4t \;dt \\
+&= \int_0^1 4t + 4i \;dt \\
+&= 4 \int_0^1 t \;dt + 4i \int_0^1 \;dt \\
+&= 4 \sq{1/2} + 4i \sq{1}\\
+&= 2+4i
 \end{align*}
+
+From $2+2i$ to $2i$ ($S_3$):
+\begin{align*}
+z(t) 
+&= (2+2i)(1-t) + 2it \\
+&= 2+2i-2t-2it+2it \\
+&= 2+2i-2t \\
+z'(t)
+&= -2 \\
+\int_{S_3} f(z) \;dz
+&= \int_0^1 f(z(t)) z'(t) \;dt\\
+&= \int_0^1 \overline{2+2i-2t} \cdot (-2) \;dt \\
+&= -2 \int_0^1 (2-2t - 2i) \;dt \\
+&= -2 \sq{(2-2i)\int_0^1 \;dt - 2\int_0^1 t\;dt}\\
+&= -2 \sq{(2-2i) 1 - 2 (1/2)}\\
+&= -2 \sq{2-2i - 1}\\
+&= -2 \sq{1-2i}\\
+&= -2 + 4i
+\end{align*}
+
+From $2i$ to $0$ ($S_4$):
+\begin{align*}
+z(t) &= 2i(1-t) + 0t \\
+&= 2i-2it \\
+z'(t) &= -2i \\
+\int_{S_4} f(z) \;dz 
+&= \int_0^1 f(z(t))z'(t) \;dt \\
+&= \int_0^1 \overline{2i-2it} \cdot (-2i) \;dt \\
+&= \int_0^1 (-2i+2it) \cdot (-2i) \;dt \\
+&= \int_0^1 -4 + 4t \;dt \\
+&= -4 \int_0^1 \;dt + 4 \int_0^1 t \;dt \\
+&= -4 (1) + 4 (1/2) \\
+&= -4 + 2 
+\end{align*}
+Thus,
+\[ 
+\int_S f(z)\;dz
+= \sq{2} + \sq{2+4i} + \sq{-2+4i} + \sq{-4+2}
+= \sq{2+2-2-4+2}+\sq{4i+4i}
+= 8i
+\]
 
 \section{Problem 2}
 The value of this integral over the spiral-shaped contour may be simplified. 
@@ -81,11 +147,145 @@ Thus,
 &= -4 \pi i
 \end{align*}
 \section{Problem 4}
+By the maximum modulus principle, the greatest modulus for $e^z$ must
+occur on the boundary. Therefore, we must only examine the three exposed edges 
+the square as well as the circle boundary.
+
+\[ 
+\abs{e^z} 
+= \abs{e^x(\cos y + i \sin y)}
+= e^x (\cos^2 y + \sin^2 y)
+= e^x
+\]
+
+Consequently, $\abs{e^z}=e^x$. Since this is monotonically increasing in $z$, 
+exactly the point $z=1$ is the maximum, with value
+$e$. Similarly, $\abs{e^z}$ is minimized on the entire edge $-2+[-1,1]i$.
+
 \section{Problem 5}
+Consider $g(z)=-if(z)=v(x,y) - iu(x,y)$, This is analytic by multiplication. Then 
+suppose $\abs{v(x,y)} \le 10$ is bounded. Then $\exp \abs{v(x,y)} \le 10$.
+But 
+\[ 
+10 
+\ge \exp\abs{v(x,y)}
+\ge \abs{\exp v(x,y)}
+= \abs{\exp\p{v(x,y) - i u(x,y)}}
+= \abs{\exp g(z)}
+\]
+For all $z \in \Co$. Thus, $\exp g(z)$, an entire analytic function, is bounded.
+Thus it is constant by Liouville's Theorem. But this requires that $g(z)$ was
+constant. However, $g$ is also injective; thus, 
+$g$ must also be constant. Consequently, if $f(z) = u(x,y)+iv(x,y)$ is an entire
+function and $\abs{v(x,y)} \le 10$, then $f$ is constant.
+
 \section{Problem 6}
+Since $D_z^{(n)} e^z = e^z$, and $e^{2 \pi i}=-1$, 
+\[ a_n=-\frac{1}{n!}, \qquad n=0,1,2,\cdots \]
+Thus, by Taylor's theorem, since $e^z$ is entire, we have the Taylor series
+\[
+e^z = \sum_{n=0}^\infty -\frac{1}{n!} (z-2 \pi i)^n
+\]
+which holds for all $z \in \Co$.
+
 \section{Problem 7}
+We assume we wish for the annulus $1 < \abs{z} < 5$.
+
+The first portion, $\frac{1}{z+5}$, will yield Taylor series
+(for $\abs{z}<5$),
+\[ 
+\frac{1}{z+5} 
+= \frac{1}{5} \frac{1}{1 -(- z/5)}
+= \frac{1}{5} \sum_{n=0}^\infty \p{\frac{z}{5}}^n
+= \sum_{n=0}^\infty \frac{1}{5^{n+1}} z^n
+\]
+
+The second portion, $2/(z-i)$, has Laurent series (for $\abs{z} > 1$),
+\[
+\frac{2}{z-i} 
+= \frac{2}{z} \frac{1}{1-i/z}
+= \frac{2}{z} \sum_{n=0}^\infty \p{\frac{i}{z}}^n
+= \frac{2}{z} \sum_{n=0}^\infty i^n z^{-n}
+= \sum_{n=0}^\infty i^n z^{-n-1}
+= \sum_{n=1}^\infty i^{n-1} z^{-n}
+\]
+
+By the uniqueness of Laurent series, 
+and since the Taylor and Laurent series above are both correct on the annulus
+$1 < \abs{z} < 5$, 
+\[
+f(z) 
+= \frac{3z+10-i}{z^2+(5-i)z-5i}
+= \frac{1}{z+5} + \frac{2}{z-i}
+= \sum_{n=0}^\infty \frac{1}{5^{n+1}} z^n
++ \sum_{n=1}^\infty i^{n-1} z^{-n}, 
+\qquad 1 < \abs{z} < 5
+\]
+
 \section{Problem 8}
 \section{Problem 9}
+\[ 
+f(z)
+= \frac{2}{z^3-6z^2+8z}
+= \frac{A}{z} + \frac{B}{z-2} + \frac{C}{z-4}
+\]
+\[
+2 
+= A (z^2-6z+8) + B (z^2-4z) + C(z^2-2z)
+= (A+B+C)z^2 + (-6A-4B-2C)z + 8A
+\]
+\[ A = 1/4 \]
+\[ -6 (1/4) -4B -2C = 0 \]
+\[ 2B+C=-3/4 \]
+\[ C=-3/4 - 2B \]
+\[ 0 = A+B+C = 1/4 + B -3/4-2B =-1/2-B\]
+\[ B=-1/2 \]
+\[ C=-3/4 - 2(-1/2) = -3/4 +1 = 1/4 \]
+Thus,
+\begin{align*}
+A &= 1/4 & B &= -1/2 & C &= 1/4
+\end{align*}
+Thus, we know that
+\[ 
+f(z) 
+= \frac{1/4}{z} + \frac{-1/2}{z-2} + \frac{1/4}{z-4} 
+\]
+Using Cauchy's integral formula, a counterclockwise loop around $0$, $2$, and $4$
+yields...
+
+...around $0$:
+\[
+\text{(This doesn't matter, so I didn't bother.)}
+\]
+
+...around $2$:
+\[
+\int_C \frac{\frac{2}{z(z-4)}}{(z-2)} \;dz 
+= 2 \pi i \frac{2}{2(-2)} 
+= 2 \pi i (-1/2)
+= - \pi i
+\]
+
+...around $4$:
+\[
+\int_C \frac{\frac{2}{z(z-2)}}{(z-4)} \;dz
+= 2 \pi i \frac{2}{4(4-2)} 
+= 2 \pi i \frac{1}{2}
+= \pi i
+\]
+
+\subsection{a}
+This will be, using something pretty much like the Cauchy Residue Formula,
+\[ -\pi i + \pi i = 0\]
+
+\subsection{b}
+Breaking this up appropriately, we add one of the twos and subtract a 4, giving us
+\[ -\pi i - \pi i = -2\pi i \]
+
+\subsection{c}
+This can be broken up into two loops: one around 2 once, and one containing both 2
+and 4. Thus, the integral is
+\[ (-\pi i) + (-\pi i + \pi i) = - \pi i \]
 \section{Problem 10}
 \section{Problem 11}
 \begin{theorem}
