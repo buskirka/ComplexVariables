@@ -20,6 +20,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Co}{\mathbb{C}}
+\DeclareMathOperator*{\Res}{Res}
 \newcommand{\p}[1]{\left(#1\right)}
 \newcommand{\sq}[1]{\left[#1\right]}
 \newcommand{\set}[1]{\left\{#1\right\}}
@@ -160,14 +161,15 @@ the square as well as the circle boundary.
 
 Consequently, $\abs{e^z}=e^x$. Since this is monotonically increasing in $z$, 
 exactly the point $z=1$ is the maximum, with value
-$e$. Similarly, $\abs{e^z}$ is minimized on the entire edge $-2+[-1,1]i$.
+$e$. Similarly, $\abs{e^z}$ is minimized on the entire edge $-2+[-1,1]i$,
+where it obtains the value $\abs{e^{-2+yi}}=e^{-2}$.
 
 \section{Problem 5}
 Consider $g(z)=-if(z)=v(x,y) - iu(x,y)$, This is analytic by multiplication. Then 
-suppose $\abs{v(x,y)} \le 10$ is bounded. Then $\exp \abs{v(x,y)} \le 10$.
+suppose $\abs{v(x,y)} \le \exp 10$ is bounded. Then $\exp \abs{v(x,y)} \le 10$.
 But 
 \[ 
-10 
+\exp 10 
 \ge \exp\abs{v(x,y)}
 \ge \abs{\exp v(x,y)}
 = \abs{\exp\p{v(x,y) - i u(x,y)}}
@@ -223,6 +225,32 @@ f(z)
 \]
 
 \section{Problem 8}
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw[color=blue] (5,2) -- (-3,2) -- (-3,-1) -- (5,-1) -- (5,2) ;
+\draw[style=<->] (-4,0) -- (6,0) ; 
+\draw[style=<->] (0,-2) -- (0,6) ; 
+\fill (0,0) circle (0.05) node[below left]{$0$};
+\fill (2,0) circle (0.05) node[below]{$2$};
+\fill (0,1) circle (0.05) node[left]{$i$};
+\fill (4,5) circle (0.05) node[below]{$4+5i$};
+\end{tikzpicture}
+\end{figure}
+When $z=0$ or $z=2$ or $z=i$, then $\frac{2s^2+i}{s-z}$ has singularities exactly at $z$, and 
+$C$ may be continuously deformed into a unit circle around $z$ without changing the integral. Thus,
+for each of these,
+\[ F(z) = \int \frac{2 s^2 + i}{s-z} \;ds = 2 \pi i (2 z^2 + i) = 4 \pi i z^2 - 2 \pi \]
+Thus,
+\begin{align*}
+F(0) &= 4 \pi i 0^2 - 2\pi = 2\pi \\
+F(2) &= 4 \pi i 2^2 - 2 \pi = -2 \pi + 16 \pi i \\
+F(i) &= 4 \pi i (i)^2 - 2 \pi = -2\pi - 4 \pi i 
+\end{align*}
+
+In the case of $4+5i$, the loop does not contain the only singularity of the interior function, 
+and thus in this case $C$ is contractible, so $F(4+5i)=0$.
+
 \section{Problem 9}
 \[ 
 f(z)
@@ -270,23 +298,62 @@ yields...
 \[
 \int_C \frac{\frac{2}{z(z-2)}}{(z-4)} \;dz
 = 2 \pi i \frac{2}{4(4-2)} 
-= 2 \pi i \frac{1}{2}
-= \pi i
+= 2 \pi i \frac{1}{4} 
+= \pi i \frac{1}{2}
+= \frac{1}{2}\pi i
 \]
 
 \subsection{a}
 This will be, using something pretty much like the Cauchy Residue Formula,
-\[ -\pi i + \pi i = 0\]
+\[ -\pi i + \frac{1}{2}\pi i = -\frac{1}{2} \pi i\]
 
 \subsection{b}
-Breaking this up appropriately, we add one of the twos and subtract a 4, giving us
-\[ -\pi i - \pi i = -2\pi i \]
+Breaking this up appropriately, noting $4$ is circumscribed clockwise rather 
+than counterclockwise, we add one of the twos and subtract a 4, giving us
+\[ -\pi i - \frac{1}{2} \pi i = -\frac{3}{2} \pi i \]
 
 \subsection{c}
 This can be broken up into two loops: one around 2 once, and one containing both 2
 and 4. Thus, the integral is
-\[ (-\pi i) + (-\pi i + \pi i) = - \pi i \]
+\[ (-\pi i) + \p{-\pi i + \frac{1}{2} \pi i} 
+= -2 \pi i + 0.5 \pi i 
+= -\frac{3}{2} \pi i \]
+
 \section{Problem 10}
+
+\begin{align*}
+x^2 + 4x + 7 &= (x+2-i\sqrt{3})(x+2+i\sqrt{3}) \\
+x^2 - 8x + 18 &= (x-4-i \sqrt{2}) (x-4+i \sqrt{2})
+\end{align*}
+
+We evaluate this integral using residues. Let
+\[
+f(z) = \frac{z^2}{(z^2+4z+7)(z^2-8z+18)}
+\]
+\begin{align*}
+f(z) &= \frac{\frac{z^2}{(z-(-2-i\sqrt{3}))(z^2-8z+18)}}{(z-(-2+i\sqrt{3})} \\
+\Res_{z=-2+i\sqrt{3}} f(z) 
+&= \frac{(-2+i\sqrt{3})^2}{(-2+i\sqrt{3}-(-2-i\sqrt{3}))((-2+i\sqrt{3})^2-8(-2+i\sqrt{3})+18)}\\
+&= \frac{(-2+i\sqrt{3})^2}{2i\sqrt{3}((-2+i\sqrt{3})^2-8(-2+i\sqrt{3})+18)}\\
+f(z) &= \frac{\frac{z^2}{(z-(4-i\sqrt{2}))(z^2+4z+7)}}{(z-(4+i\sqrt{2})} \\
+\Res_{z=4+i\sqrt{2}} f(z) 
+&= \frac{(4+i\sqrt{2})^2}{((4+i\sqrt{2})-(4-i\sqrt{2})) ( (4+i\sqrt{2})^2 + 4(4+i\sqrt{2}) +7)}\\
+&= \frac{(4+i\sqrt{2})^2}{2i\sqrt{2} ( (4+i\sqrt{2})^2 + 4(4+i\sqrt{2}) +7)}
+\end{align*}
+Since the degree of the numerator is two less than the degree of the denominator,
+we may use equation (10) on page 264 of the text. So
+\[
+\int_{-\infty}^\infty f(x) \;dx
+= 2 \pi i \sq{
+\frac{(-2+i\sqrt{3})^2}{2i\sqrt{3}((-2+i\sqrt{3})^2-8(-2+i\sqrt{3})+18)}
++
+\frac{(4+i\sqrt{2})^2}{2i\sqrt{2} ( (4+i\sqrt{2})^2 + 4(4+i\sqrt{2}) +7)}
+}
+\]
+Since this is a genuinely horrific expression, simplification has been left to the reader. 
+However, numerical methods evaluate this to $1.14779331879550 + i \cdot 4.35983562251079 \times 10^{-17}$,
+which matches to precision the approximated value.
+
 \section{Problem 11}
 \begin{theorem}
 Suppose that $f$ is an entire function satisfying 
